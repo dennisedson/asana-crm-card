@@ -12,8 +12,25 @@ exports.main = async (context = {}, sendResponse) => {
     text: "_An example of a CRM card extension that displays data from Hubspot, uses ZenQuotes public API to display daily quote, and demonstrates custom actions using serverless functions._",
   };
 
+  var config = {
+    method: 'get',
+    url: 'https://app.asana.com/api/1.0/users/me?opt_pretty=true&opt_fields=followers,assignee',
+    headers: { 
+      'Accept': 'application/json', 
+      'Authorization': `Bearer 1/`+ process.env.asana_pat
+    }
+  };
+  
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  
   try {
-    const { data } = await axios.get("https://zenquotes.io/api/random");
+    const { data } = await axios.get("https://app.asana.com/api/1.0/users/me?opt_pretty=true&opt_fields=followers,assignee'");
 
     const quoteSections = [
       {
@@ -27,7 +44,7 @@ exports.main = async (context = {}, sendResponse) => {
           {
             type: "text",
             format: "markdown",
-            text: `**Quote**: ${data[0].q}`
+            text: `**Quote**: ${data}`
           },
           {
             type: "text",

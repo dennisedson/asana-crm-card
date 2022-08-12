@@ -4,7 +4,7 @@
   "appFunctions": {
     "crm-card": {
       "file": "crm-card.js",
-      "secrets": []
+      "secrets": ["asana_pat"]
     }
   }
 }
