@@ -13,7 +13,7 @@ exports.main = async (context = {}, sendResponse) => {
   };
 
   try {
-    const { data } = await axios.get("https://app.asana.com/api/1.0/users/me?opt_pretty=true&opt_fields=followers,assignee");
+    // const { data } = await axios.get("https://app.asana.com/api/1.0/users/me?opt_pretty=true&opt_fields=followers,assignee");
 
     const quoteSections = [
       {
