@@ -1,19 +1,24 @@
 // For external API calls
 const axios = require('axios');
-const asana_pat = process.env.asana_pat
+const token = process.env.asana_pat
 exports.main = async (context = {}, sendResponse) => {
-  console.log(context)
+console.log(context);
+  let config = {
+    headers: {
+      'Authorization': 'Bearer ' + context.secrets.asana_pat
+    }
+  }
   // Store contact firstname, configured as propertiesToSend in crm-card.json
   const { firstname } = context.propertiesToSend;
 
   const introMessage = {
     type: "text",
     format: "markdown",
-    text: "_An example of a CRM card extension that displays data from Hubspot, uses ZenQuotes public API to display daily quote, and demonstrates custom actions using serverless functions._",
+    text: `"_ASANA._" ${config.headers}`,
   };
 
   try {
-    const { data } = await axios.get("https://zenquotes.io/api/random");
+    const { data } = await axios.get("https://app.asana.com/api/1.0/users/me?opt_pretty=true&opt_fields=followers,assignee",config);
 
     const quoteSections = [
       {
@@ -27,7 +32,7 @@ exports.main = async (context = {}, sendResponse) => {
           {
             type: "text",
             format: "markdown",
-            text: `**Quote**: ${data[0].q}`
+            text: `**Quote**: ${data[0].gid}`
           },
           {
             type: "text",
