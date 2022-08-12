@@ -15,7 +15,7 @@ exports.main = async (context = {}, sendResponse) => {
   try {
     const { data } = await axios.get("https://app.asana.com/api/1.0/users/me?opt_pretty=true&opt_fields=followers,assignee",{
       headers:{
-        'authorization': 'Bearer 1'+ process.env.asana_pat
+        'authorization': 'Bearer 1/'+ process.env.asana_pat
       }
     });
 
