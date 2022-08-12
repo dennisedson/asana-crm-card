@@ -1,11 +1,11 @@
 // For external API calls
 const axios = require('axios');
-
+const token = process.env.asana_pat
 exports.main = async (context = {}, sendResponse) => {
-  const token = process.env.asana_pat
+
   let config = {
     headers: {
-      'Authorization': 'Bearer ' + token
+      'Authorization': 'Bearer ' + context.secrets.asana_pat
     }
   }
   // Store contact firstname, configured as propertiesToSend in crm-card.json
