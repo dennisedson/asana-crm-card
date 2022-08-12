@@ -13,7 +13,12 @@ exports.main = async (context = {}, sendResponse) => {
   };
 
   try {
-    // const { data } = await axios.get("https://app.asana.com/api/1.0/users/me?opt_pretty=true&opt_fields=followers,assignee");
+    const { data } = await axios.get("https://app.asana.com/api/1.0/users/me?opt_pretty=true&opt_fields=followers,assignee",{
+    headers: { 
+      'Accept': 'application/json', 
+      'Authorization': 'Bearer 1/'+asana_pat
+    }
+  });
 
     const quoteSections = [
       {
