@@ -1,7 +1,8 @@
 // For external API calls
 const axios = require('axios');
-const token = process.env.asana_pat
+
 exports.main = async (context = {}, sendResponse) => {
+  const token = process.env.asana_pat
   let config = {
     headers: {
       'Authorization': 'Bearer ' + token
@@ -13,7 +14,7 @@ exports.main = async (context = {}, sendResponse) => {
   const introMessage = {
     type: "text",
     format: "markdown",
-    text: "_ASANA._",
+    text: `"_ASANA._" ${config}`,
   };
 
   try {
