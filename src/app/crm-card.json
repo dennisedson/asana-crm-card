@@ -2,7 +2,7 @@
   "type": "crm-card",
   "version": "2",
   "data": {
-    "title": "Example CRM Card",
+    "title": "Asana Tool",
     "fetch": {
       "targetFunction": "crm-card",
       "objectTypes": [

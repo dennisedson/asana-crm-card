@@ -1,6 +1,6 @@
 {
-  "name": "Example App",
-  "description": "An example private app that contains a single CRM card extension.",
+  "name": "Asana Tasks",
+  "description": "Building an asana focused CRM card.",
   "scopes": [
     "crm.objects.contacts.read",
     "crm.objects.contacts.write"
