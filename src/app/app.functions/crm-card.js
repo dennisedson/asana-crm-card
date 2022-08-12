@@ -1,8 +1,12 @@
 // For external API calls
 const axios = require('axios');
-const asana_pat = process.env.asana_pat
+const token = process.env.asana_pat
 exports.main = async (context = {}, sendResponse) => {
-
+  let config = {
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  }
   // Store contact firstname, configured as propertiesToSend in crm-card.json
   const { firstname } = context.propertiesToSend;
 
@@ -13,12 +17,7 @@ exports.main = async (context = {}, sendResponse) => {
   };
 
   try {
-    const { data } = await axios.get("https://app.asana.com/api/1.0/users/me?opt_pretty=true&opt_fields=followers,assignee",{
-    headers: { 
-      'Accept': 'application/json', 
-      'Authorization': 'Bearer 1/1199543330726057:db2c13451884058c814994973a672430'
-    }
-  });
+    const { data } = await axios.get("https://app.asana.com/api/1.0/users/me?opt_pretty=true&opt_fields=followers,assignee",config);
 
     const quoteSections = [
       {
