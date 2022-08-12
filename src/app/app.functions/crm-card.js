@@ -2,7 +2,7 @@
 const axios = require('axios');
 
 exports.main = async (context = {}, sendResponse) => {
-  const token = context.secrets.asana_pat
+  const token = process.env.asana_pat
   let config = {
     headers: {
       'Authorization': 'Bearer ' + token
@@ -14,7 +14,7 @@ exports.main = async (context = {}, sendResponse) => {
   const introMessage = {
     type: "text",
     format: "markdown",
-    text: `"_ASANA._" ${config}`,
+    text: `"_ASANA._" ${config.headers}`,
   };
 
   try {
