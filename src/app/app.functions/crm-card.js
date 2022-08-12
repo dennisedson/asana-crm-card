@@ -2,7 +2,7 @@
 const axios = require('axios');
 const asana_pat = process.env.asana_pat
 exports.main = async (context = {}, sendResponse) => {
-
+  console.log(context)
   // Store contact firstname, configured as propertiesToSend in crm-card.json
   const { firstname } = context.propertiesToSend;
 
