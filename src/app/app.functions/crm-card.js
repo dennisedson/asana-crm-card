@@ -2,7 +2,7 @@
 const axios = require('axios');
 const token = process.env.asana_pat
 exports.main = async (context = {}, sendResponse) => {
-
+console.log(context)
   let config = {
     headers: {
       'Authorization': 'Bearer ' + context.secrets.asana_pat
@@ -10,7 +10,7 @@ exports.main = async (context = {}, sendResponse) => {
   }
   // Store contact firstname, configured as propertiesToSend in crm-card.json
   const { firstname } = context.propertiesToSend;
-console.log(context)
+
   const introMessage = {
     type: "text",
     format: "markdown",
