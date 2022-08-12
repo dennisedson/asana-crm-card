@@ -2,7 +2,7 @@
 const axios = require('axios');
 
 exports.main = async (context = {}, sendResponse) => {
-  const token = process.env.asana_pat
+  const token = context.secrets.asana_pat
   let config = {
     headers: {
       'Authorization': 'Bearer ' + token
